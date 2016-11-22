@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  RewriteRule ^(.*)$ /web/index.php [L]
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex /web/index.php
+</IfModule>

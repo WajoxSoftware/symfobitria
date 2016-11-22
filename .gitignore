@@ -1,0 +1,14 @@
+/bitrix/cache
+/bitrix/managed_cache
+/bitrix/backup
+/upload
+/bitrix/.settings.php
+/bitrix/php_interface/dbconn.php
+/backup
+/app/vendor
+/log.txt
+/.htpasswd
+/robots.txt
+/urlrewrite.php
+/config/.env
+/config/mailchimp.yml
