@@ -16,6 +16,7 @@
     	"psr-4": {
     		"app\\components\\": "./components",
             "app\\bundles\\": "./bundles",
+            "Entity\\": "./model/Entity"
     	}
     },
     "minimum-stability": "dev"
