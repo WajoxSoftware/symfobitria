@@ -1,4 +1,6 @@
-# Apply
+# Symfobitria
+
+Simple wrapper for projects based on Bitrix CMS.
 
 ## Directories structure
 
