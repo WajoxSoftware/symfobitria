@@ -2,17 +2,3 @@
 hello:
     path: /hello
     defaults: { _controller: '\app\bundles\main\controllers\DefaultController', _action: 'index' }
-# bitrix routes
-bitrix_root:
-    path: /
-    defaults: { _controller: '\app\bundles\bitrix\controllers\DefaultController', _action: 'index'}
-bitrix_dir:
-    path: /{path}
-    defaults: { _controller: '\app\bundles\bitrix\controllers\DefaultController', _action: 'page' }
-    requirements:
-      path: .*
-bitrix_page:
-    path: /{path}.{_format}
-    defaults: { _controller: '\app\bundles\bitrix\controllers\DefaultController', _action: 'page',  }
-    requirements:
-      path: .*

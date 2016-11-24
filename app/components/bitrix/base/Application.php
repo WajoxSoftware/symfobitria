@@ -4,9 +4,9 @@ namespace app\components\bitrix\base;
 class Application
 {
 	protected $content = [];
-	protected $loadBitrixFiles = true;
+	protected $loadBitrixFiles = false;
 
-	public function __construct($loadBitrixFiles = true)
+	public function __construct($loadBitrixFiles = false)
 	{
 		$this->setLoadBitrixFiles($loadBitrixFiles);
 	}
@@ -51,7 +51,6 @@ class Application
 		global $USER;
 		global $APPLICATION;
 		global $DB;
-		
 		extract($GLOBALS);
 
 		\CMain::PrologActions();

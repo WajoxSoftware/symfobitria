@@ -25,24 +25,21 @@ class Application
 	const CONFIG_ROUTES_YAML = 'routes.yml';
 	const CONFIG_SERVICES_YAML = 'services.yml';
 
-	const MODE_WEB = 'web';
-	const MODE_CONSOLE = 'console';
-
 	protected $container;
+	protected $controller;
 	protected $request;
 	protected $response;
 	protected $route;
 	protected $bitrix;
 	protected $settings;
 	protected $em;
-	protected $mode;
 
 	/* @var \app\components\base\Application */
 	protected static $instance;
 
-	public static function createInstance($settings = [], $mode = self::MODE_WEB)
+	public static function createInstance($settings = [])
 	{
-		self::setInstance(new self($settings, $mode));
+		self::setInstance(new self($settings));
 
 		return self::getInstance();
 	}
@@ -59,31 +56,9 @@ class Application
 
 	public function run()
 	{
-		if ($this->getIsWebMode()) {
-			return $this->runWeb();
-		}
-
-		return $this->runConsole();
-	}
-
-	public function runConsole()
-	{
-		$this->setMode(self::MODE_CONSOLE)
-			->initContainer()
-			->runConsoleCommand();
-
-		return $this;			
-	}
-
-	public function runWeb()
-	{
 		try {
-			$this->setMode(self::MODE_WEB)
-				->initBitrix()
-				->initContainer()
-				->initRequest()
-				->initResponse()
-				->initRoute()
+			$this
+				->initController()
 				->beforeProcess()
 				->process()
 				->afterProcess();			
@@ -97,32 +72,27 @@ class Application
 
 	}
 
-	public function __construct($settings = [], $mode = self::MODE_WEB)
+	public function __construct($settings = [])
 	{
-		$this->setMode($mode)
-			 ->initSettings($settings);
+		$this->initSettings($settings)
+			->initBitrix()
+			->initContainer()
+			->initBitrix();
 	}
 
-	protected function setMode($mode)
+	public function prepareHttp()
 	{
-		$this->mode = $mode;
+		$this->initRequest()
+			->initResponse();
 
 		return $this;
 	}
 
-	public function getMode()
+	public function parseRequest()
 	{
-		return $this->mode;
-	}
+		$this->initRoute();
 
-	public function getIsWebMode()
-	{
-		return $this->getMode() == self::MODE_WEB;
-	}
-
-	public function getIsConsoleMode()
-	{
-		return $this->getMpde() == self::MODE_CONSOLE;
+		return $this;
 	}
 
 	public function getEm()
@@ -166,7 +136,7 @@ class Application
 		return $this->bitrix;
 	}
 
-	protected function runConsoleCommand()
+	public function runConsoleCommand()
 	{
 		$app = new \Symfony\Component\Console\Application();
 
@@ -182,6 +152,17 @@ class Application
 	protected static function setInstance($instance)
 	{
 		self::$instance = $instance;
+	}
+
+	protected function initController()
+	{
+		$controllerClassName = $this->findController();
+
+		$controller = new $controllerClassName();
+
+		$this->setController($controller);
+
+		return $this;
 	}
 
 	protected function process()
@@ -321,13 +302,9 @@ class Application
 
 	protected function runController()
 	{
-		$controllerClassName = $this->findController();
+		$this->getController()->run();
 
-		$controller = new $controllerClassName();
-
-		$controller->run();
-
-		$response = $controller->getResponse();
+		$response = $this->getController()->getResponse();
 
 		$this->setResponse($response);
 
@@ -371,6 +348,18 @@ class Application
 		return $this;
 	}
 
+	protected function setController($controller)
+	{
+		$this->controller = $controller;
+
+		return $this;
+	}
+
+	protected function getController()
+	{
+		return $this->controller;
+	}
+
 	protected function setRoute($route)
 	{
 		$this->route = $route;
@@ -398,6 +387,7 @@ class Application
 
 	protected function beforeProcess()
 	{
+		$this->getController()->beforeProcess();
 		$this->getBitrix()->prolog();
 
 		return $this;
@@ -405,6 +395,7 @@ class Application
 
 	protected function afterProcess()
 	{
+		$this->getController()->afterProcess();
 		$this->getBitrix()->epilog();
 
 		$this->sendResponse();

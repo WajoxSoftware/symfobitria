@@ -1,2 +1,0 @@
-Bitrix View
-<?= $path ?>

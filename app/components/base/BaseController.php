@@ -8,6 +8,26 @@ class BaseController
 {
 	protected $viewPath;
 
+	public function __construct()
+	{
+		$this->init();
+	}
+
+	public function init()
+	{
+		;
+	}
+
+	public function beforeProcess()
+	{
+		;
+	}
+
+	public function afterProcess()
+	{
+		;
+	}
+
 	public function run()
 	{
 		$actionMethod = $this->getActionMethod();

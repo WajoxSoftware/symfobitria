@@ -14,17 +14,30 @@ $urlParts = parse_url($requestUri);
 $requestPath = $urlParts['path'];
 $ext = pathinfo($requestPath, PATHINFO_EXTENSION);
 
+define('APP_REQUEST_PATH' , $requestPath);
+
 // redirect if not excecutable file
 if (!in_array($ext, ['', 'php', 'phtml', 'html'])
 	&& file_exists(APP_BITRIX_ROOT_DIR . realpath($requestPath))
+	&& APP_BITRIX_ROOT_DIR . realpath($requestPath) != APP_BITRIX_ROOT_DIR
 ) {
 	header('Location: /btxapp/' . $requestPath);
 	die();
 }
 
-// initialize application
-$loadBitrixFiles = !file_exists(APP_BITRIX_ROOT_DIR . $requestPath);
+\app\components\base\Application::createInstance()->prepareHttp();
 
-\app\components\base\Application::createInstance([
-	'loadBitrixFiles' => $loadBitrixFiles,
-])->runWeb();
+$loadBitrix = false;
+
+try {
+	\app\components\base\Application::getInstance()
+		->parseRequest()
+		->run();	
+} catch(\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
+	$loadBitrix = true;
+}
+
+if ($loadBitrix) {
+	include(APP_BASE_DIR . '/bitrixApp.php');
+}
+
