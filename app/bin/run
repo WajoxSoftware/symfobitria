@@ -2,5 +2,7 @@
 <?php
 require __DIR__ . '/../bootstrap.php';
 
-\app\components\base\Application::createInstance()->runConsoleCommand();
+\app\components\base\Application::createInstance([
+	'loadBitrixFiles' => true,
+])->runConsole();
 

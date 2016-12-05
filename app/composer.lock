@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "de8b1b3f4ede67873fe411bc86eea06e",
-    "content-hash": "afbc454260686e9a3dc897700cc1c7e2",
+    "hash": "d4e6ea68e64197ba26bbc17c75175244",
+    "content-hash": "af02c2a329c9fa186bf929a33c473d31",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -550,6 +550,67 @@
             "time": "2015-08-31 13:19:01"
         },
         {
+            "name": "dompdf/dompdf",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dompdf/dompdf.git",
+                "reference": "e4b49285f8c7165f31b5cc6395a5ee1bbc35144a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/e4b49285f8c7165f31b5cc6395a5ee1bbc35144a",
+                "reference": "e4b49285f8c7165f31b5cc6395a5ee1bbc35144a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-gd": "*",
+                "ext-mbstring": "*",
+                "phenx/php-font-lib": "0.4.*",
+                "phenx/php-svg-lib": "0.1.*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "0.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dompdf\\": "src/"
+                },
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Ménager",
+                    "email": "fabien.menager@gmail.com"
+                },
+                {
+                    "name": "Brian Sweeney",
+                    "email": "eclecticgeek@gmail.com"
+                },
+                {
+                    "name": "Gabriel Bull",
+                    "email": "me@gabrielbull.com"
+                }
+            ],
+            "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
+            "homepage": "https://github.com/dompdf/dompdf",
+            "time": "2016-06-23 17:27:50"
+        },
+        {
             "name": "drewm/mailchimp-api",
             "version": "v2.2.4",
             "source": {
@@ -771,6 +832,74 @@
             "time": "2016-11-02 14:11:11"
         },
         {
+            "name": "phenx/php-font-lib",
+            "version": "0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PhenX/php-font-lib.git",
+                "reference": "b8af0cacdc3cbf1e41a586fcb78f506f4121a088"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/b8af0cacdc3cbf1e41a586fcb78f506f4121a088",
+                "reference": "b8af0cacdc3cbf1e41a586fcb78f506f4121a088",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "FontLib\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Ménager",
+                    "email": "fabien.menager@gmail.com"
+                }
+            ],
+            "description": "A library to read, parse, export and make subsets of different types of font files.",
+            "homepage": "https://github.com/PhenX/php-font-lib",
+            "time": "2015-05-06 20:02:39"
+        },
+        {
+            "name": "phenx/php-svg-lib",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PhenX/php-svg-lib.git",
+                "reference": "b419766515b3426c6da74b0e29e93d71c4f17099"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PhenX/php-svg-lib/zipball/b419766515b3426c6da74b0e29e93d71c4f17099",
+                "reference": "b419766515b3426c6da74b0e29e93d71c4f17099",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Svg\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Ménager",
+                    "email": "fabien.menager@gmail.com"
+                }
+            ],
+            "description": "A library to read, parse and export to PDF SVG files.",
+            "homepage": "https://github.com/PhenX/php-svg-lib",
+            "time": "2015-05-06 18:49:49"
+        },
+        {
             "name": "psr/http-message",
             "version": "dev-master",
             "source": {
@@ -939,12 +1068,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "203e860e096cf30c03bdb1e975468218c0fa35a8"
+                "reference": "dc43722df24b1320e22a0a525a74fed0eba61552"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/203e860e096cf30c03bdb1e975468218c0fa35a8",
-                "reference": "203e860e096cf30c03bdb1e975468218c0fa35a8",
+                "url": "https://api.github.com/repos/symfony/config/zipball/dc43722df24b1320e22a0a525a74fed0eba61552",
+                "reference": "dc43722df24b1320e22a0a525a74fed0eba61552",
                 "shasum": ""
             },
             "require": {
@@ -987,7 +1116,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-19 20:35:20"
+            "time": "2016-11-29 11:12:53"
         },
         {
             "name": "symfony/console",
@@ -1113,12 +1242,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "6b46d7f505c1eb2b31a816dbf94f85007ee8ea04"
+                "reference": "3e613031d3e80beef18a015e544263a6dd58123f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/6b46d7f505c1eb2b31a816dbf94f85007ee8ea04",
-                "reference": "6b46d7f505c1eb2b31a816dbf94f85007ee8ea04",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/3e613031d3e80beef18a015e544263a6dd58123f",
+                "reference": "3e613031d3e80beef18a015e544263a6dd58123f",
                 "shasum": ""
             },
             "require": {
@@ -1168,7 +1297,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-19 20:35:20"
+            "time": "2016-11-25 12:33:00"
         },
         {
             "name": "symfony/filesystem",
@@ -1176,12 +1305,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "2de71c462f2a33db9eaf340196117f76c71e9dc5"
+                "reference": "696d63087748bb651e69877a903ca389eb0db68a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/2de71c462f2a33db9eaf340196117f76c71e9dc5",
-                "reference": "2de71c462f2a33db9eaf340196117f76c71e9dc5",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/696d63087748bb651e69877a903ca389eb0db68a",
+                "reference": "696d63087748bb651e69877a903ca389eb0db68a",
                 "shasum": ""
             },
             "require": {
@@ -1217,7 +1346,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-19 20:35:20"
+            "time": "2016-11-24 00:46:49"
         },
         {
             "name": "symfony/http-foundation",
@@ -1225,12 +1354,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "ac0c6ae7a22b0deaadd21d345c3d79ef9ca2be10"
+                "reference": "33fc1f26c15ee23be2af9407795ce7affa37671a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/ac0c6ae7a22b0deaadd21d345c3d79ef9ca2be10",
-                "reference": "ac0c6ae7a22b0deaadd21d345c3d79ef9ca2be10",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/33fc1f26c15ee23be2af9407795ce7affa37671a",
+                "reference": "33fc1f26c15ee23be2af9407795ce7affa37671a",
                 "shasum": ""
             },
             "require": {
@@ -1270,7 +1399,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-19 20:35:20"
+            "time": "2016-11-27 04:22:04"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1337,12 +1466,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "37d88130f80998a5044c43c825f5d821b68ee58f"
+                "reference": "e6251017c52b5d900f3d3ee8fe4ea80ed54b16b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/37d88130f80998a5044c43c825f5d821b68ee58f",
-                "reference": "37d88130f80998a5044c43c825f5d821b68ee58f",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/e6251017c52b5d900f3d3ee8fe4ea80ed54b16b7",
+                "reference": "e6251017c52b5d900f3d3ee8fe4ea80ed54b16b7",
                 "shasum": ""
             },
             "require": {
@@ -1404,7 +1533,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2016-11-19 20:35:20"
+            "time": "2016-11-25 12:33:00"
         },
         {
             "name": "symfony/templating",
@@ -1563,12 +1692,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c"
+                "reference": "e5a077e823e5ea0b3714b78cd260738cd583aeeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c",
-                "reference": "3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/e5a077e823e5ea0b3714b78cd260738cd583aeeb",
+                "reference": "e5a077e823e5ea0b3714b78cd260738cd583aeeb",
                 "shasum": ""
             },
             "require": {
@@ -1605,7 +1734,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2016-09-01 10:05:43"
+            "time": "2016-11-28 23:08:37"
         }
     ],
     "packages-dev": [],

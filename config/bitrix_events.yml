@@ -1,0 +1,31 @@
+modules:
+  main:
+    OnBeforeEventAdd:
+      - \app\components\bitrix\events\handlers\BeforeEventAdd
+    OnBeforeEventSend:
+      - \app\components\bitrix\events\handlers\BeforeEventSend
+    OnBeforeUserRegister:
+      - \app\components\bitrix\events\handlers\BeforeUserRegister
+    OnBeforeUserUpdate:
+      - \app\components\bitrix\events\handlers\BeforeUserUpdate
+    OnAfterUserUpdate:
+      - \app\components\bitrix\events\handlers\AfterUserUpdate
+    OnAfterUserAdd:
+      - \app\components\bitrix\events\handlers\AfterUserRegister
+    OnAfterUserRegister:
+      - \app\components\bitrix\events\handlers\AfterUserRegister
+    OnAdminContextMenuShow:
+      - \app\components\bitrix\events\handlers\AdminContextMenuShow
+    OnAdminListDisplay:
+      - \app\components\bitrix\events\handlers\AdminListDisplay
+    OnAdminTabControlBegin:
+      - \app\components\bitrix\events\handlers\AdminTabControlBegin
+  iblock:
+    OnBeforeIBlockElementUpdate:
+      - \app\components\bitrix\events\handlers\BeforeIBlockElementUpdate
+    OnAfterIBlockElementAdd:
+      - \app\components\bitrix\events\handlers\AfterIBlockElementAdd
+    OnAfterIBlockElementUpdate:
+      - \app\components\bitrix\events\handlers\AfterIBlockElementUpdate
+
+  

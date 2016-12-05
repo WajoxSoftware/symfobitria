@@ -75,9 +75,7 @@ class Application
 	public function __construct($settings = [])
 	{
 		$this->initSettings($settings)
-			->initBitrix()
-			->initContainer()
-			->initBitrix();
+			->initContainer();
 	}
 
 	public function prepareHttp()
@@ -88,9 +86,9 @@ class Application
 		return $this;
 	}
 
-	public function parseRequest()
+	public function parseRequest($pathInfo = null)
 	{
-		$this->initRoute();
+		$this->initRoute($pathInfo);
 
 		return $this;
 	}
@@ -136,7 +134,14 @@ class Application
 		return $this->bitrix;
 	}
 
-	public function runConsoleCommand()
+	public function runConsole()
+	{
+		$this->beforeProcess()
+			->runConsoleCommand()
+			->afterProcess();
+	}
+
+	protected function runConsoleCommand()
 	{
 		$app = new \Symfony\Component\Console\Application();
 
@@ -147,6 +152,8 @@ class Application
 		} 
 		
 		$app->run();
+
+		return $this;
 	}
 
 	protected static function setInstance($instance)
@@ -336,14 +343,20 @@ class Application
 		return $this;
 	}
 
-	protected function initRoute()
+	protected function initRoute($pathInfo = null)
 	{
 		$matcher = new UrlMatcher(
 			$this->getRouteCollection(),
 			$this->getRequestContext()
 		);
 
-		$this->setRoute($matcher->matchRequest($this->getRequest()));
+		if ($pathInfo) {
+			$route = $matcher->match($pathInfo);
+		} else {
+			$route = $matcher->matchRequest($this->getRequest());	
+		}
+		
+		$this->setRoute($route);
 
 		return $this;
 	}
@@ -387,15 +400,23 @@ class Application
 
 	protected function beforeProcess()
 	{
-		$this->getController()->beforeProcess();
-		$this->getBitrix()->prolog();
+		if ($this->getController()) {
+			$this->getController()->beforeProcess();	
+		}
+		
+		$this->initBitrix()
+			->getBitrix()
+			->prolog();
 
 		return $this;
 	}
 
 	protected function afterProcess()
 	{
-		$this->getController()->afterProcess();
+		if ($this->getController()) {
+			$this->getController()->afterProcess();
+		}
+		
 		$this->getBitrix()->epilog();
 
 		$this->sendResponse();
@@ -405,14 +426,18 @@ class Application
 
 	protected function renderNotFoundError()
 	{
+		/* @TODO: use templates */
 		$msg = '<h1>404 Not found</h1>';
 		$this->createResponse($msg, Response::HTTP_NOT_FOUND);
+		$this->sendResponse();
 	}
 
 	protected function renderInternalError()
 	{
+		/* @TODO: use templates */
 		$msg = '<h1>500 Internal Server Error</h1>';
 		$this->createResponse($msg, Response::HTTP_INTERNAL_SERVER_ERROR);
+		$this->sendResponse();
 	}
 
 	protected function createResponse($content, $code = Response::HTTP_OK, $headers = [])

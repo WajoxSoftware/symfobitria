@@ -10,7 +10,8 @@
         "symfony/templating": "^3.1",
         "theiconic/php-ga-measurement-protocol": "^2.0",
         "robmorgan/phinx": "*",
-        "doctrine/orm": "2.4.*"
+        "doctrine/orm": "2.4.*",
+        "dompdf/dompdf": "*"
     },
     "autoload": {
     	"psr-4": {

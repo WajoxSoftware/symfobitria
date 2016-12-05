@@ -6,7 +6,6 @@
 include(__DIR__ . '/../app/bootstrap.php');
 
 // rewrite DOCUMENT ROOT path for Bitrix
-$_SERVER['DOCUMENT_ROOT'] = APP_BITRIX_ROOT_DIR;
 
 // detect request
 $requestUri = $_SERVER['REQUEST_URI'];

@@ -6,45 +6,61 @@ use Symfony\Component\Templating\Loader\FilesystemLoader;
 
 class View
 {
-	protected $directory;
-	protected $templateName;
+	protected $baseDir;
 
-	public function __construct($directory, $templateName)
+	public function __construct($baseDir)
 	{
-		$this->setDirectory($directory)
-			->setTemplateName($templateName);
+		$this->setBaseDir($baseDir);
 	}
 
-	public function render($params)
+	public function render($viewFile, $params)
 	{
-		$loader = new FilesystemLoader($this->getDirectory());
+		$dir = $this->getViewFileDirectory($viewFile);
+		$file = $this->getViewFileName($viewFile);
 
-		$templating = new TemplateEngine(new TemplateNameParser(), $loader);
+		$templating = new TemplateEngine(
+			new TemplateNameParser(),
+			new FilesystemLoader($dir)
+		);
 
-		return $templating->render($this->getTemplateName(), $params);
+		return $templating->render($file,$params);
 	}
-	
-	protected function setDirectory($directory)
+
+	protected function getViewFileDirectory($viewFile)
 	{
-		$this->directory = $directory;
+		$pathInfo = pathinfo($viewFile);
+
+		if (!isset($pathInfo['dirname'])
+			|| empty($pathInfo['dirname'])
+		) {
+			return $this->getBaseDir() . '/%name%';
+		}
+
+		return $pathInfo['dirname'] . '/%name%';
+	}
+
+	protected function getViewFileName($viewFile)
+	{
+		$pathInfo = pathinfo($viewFile);
+
+		if (!isset($pathInfo['filename'])
+			|| empty($pathInfo['filename'])
+		) {
+			throw new \Exception('Can not determine view file name');
+		}
+
+		return  $pathInfo['filename'] . '.' . $pathInfo['extension'];
+	}
+
+	protected function setBaseDir($baseDir)
+	{
+		$this->baseDir = $baseDir;
 
 		return $this;
 	}
 
-	protected function getDirectory()
+	protected function getBaseDir()
 	{
-		return $this->directory;
-	}
-
-	protected function setTemplateName($templateName)
-	{
-		$this->templateName = $templateName;
-
-		return $this;
-	}
-
-	protected function getTemplateName()
-	{
-		return $this->templateName;
+		return $this->baseDir;
 	}
 }

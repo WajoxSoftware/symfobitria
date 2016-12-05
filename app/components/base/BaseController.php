@@ -6,8 +6,10 @@ use app\components\bitrix\Bootstrap as BitrixBootstrap;
 
 class BaseController
 {
-	protected $viewPath;
+	protected $layout = 'layouts/main.php';
 
+	use \app\components\traits\ApplicationTrait;
+	
 	public function __construct()
 	{
 		$this->init();
@@ -32,31 +34,11 @@ class BaseController
 	{
 		$actionMethod = $this->getActionMethod();
 
-		return $this->beforeAction($actionMethod)
-			->runAction($actionMethod)
-			->afterAction($actionMethod);
+		$this->beforeAction($actionMethod);
+		$this->runAction($actionMethod);
+		$this->afterAction($actionMethod);
 	}
 
-	public function getApplication()
-	{
-		return \app\components\base\Application::getInstance();
-	}
-
-	public function getRequest()
-	{
-		return $this->getApplication()->getRequest();
-	}
-
-	public function getContainer()
-	{
-		return $this->getApplication()->getContainer();
-	}
-	
-	public function getEm()
-	{
-		return $this->getApplication()->getEm();
-	}
-	
 	public function getActionMethod()
 	{
 		$route = $this->getApplication()->getRoute();
@@ -73,18 +55,6 @@ class BaseController
 	public function getResponse()
 	{
 		return $this->response;
-	}
-
-	protected function getViewPath()
-	{
-		return $this->viewPath;
-	}
-
-	protected function setViewPath($viewPath)
-	{
-		$this->viewPath;
-
-		return $this;
 	}
 
 	protected function createResponse($content, $code = Response::HTTP_OK, $headers = [])
@@ -137,12 +107,21 @@ class BaseController
 
 	protected function render($template, $params = [], $code = Response::HTTP_OK, $headers = [])
 	{
-		$view = new View(
-			APP_BASE_DIR . $this->getViewPath() . '/%name%',
-			$template
+		$view = new View($this->getViewsDir());
+
+		$response = $view->render(
+			$this->getViewPath($template),
+			$params
 		);
 
-		return $this->createResponse($view->render($params), $code, $headers);
+		if ($this->getLayout()) {
+			$response = $view->render(
+				$this->getLayoutPath(),
+				['content' => $response]
+			);
+		}
+
+		return $this->createResponse($response, $code, $headers);
 	}
 
 	protected function redirect($url, $permanent = false)
@@ -150,5 +129,56 @@ class BaseController
 		$statusCode = $permanent ? Response::HTTP_MOVED_PERMANENTLY : Response::HTTP_FOUND;
 
 		return $this->createResponse('Redirect', $statusCode, ['Location' => $url]);
+	}
+
+	protected function getLayout()
+	{
+		return $this->layout;
+	}
+
+	protected function setLayout($layout)
+	{
+		$this->layout = $layout;
+
+		return $this;
+	}
+
+	protected function getClassName()
+	{
+		return get_class($this);
+	}
+
+	protected function getBundleDir()
+	{
+		$parts = explode('\\', $this->getClassName());
+		$parts = array_slice($parts, 0, -2);
+
+		return APP_ROOT_DIR . '/' . implode('/', $parts);
+	}
+
+	protected function getViewsDir()
+	{
+		return $this->getBundleDir() . '/views';
+	}
+
+	protected function getViewPath($viewFile)
+	{
+		return $this->getViewsDir() . '/' . $this->getId() . '/' . $viewFile;
+	}
+
+	protected function getLayoutPath()
+	{
+		return $this->getViewsDir() . '/' . $this->getLayout();
+	}
+
+	protected function getId()
+	{
+		$id = explode('\\', $this->getClassName());
+		$id = end($id);
+		
+
+		$id = str_replace('Controller', '', $id);
+
+		return mb_strtolower($id);
 	}
 }

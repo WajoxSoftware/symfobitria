@@ -1,0 +1,24 @@
+parameters:
+  app.mailer.adapter.class: app\components\maildelivery\adapter\MailchimpAdapter
+  app.mailer.adapter.config: 'mailchimp.yml'
+  app.analytics.adapter.class: app\components\analytics\adapter\GoogleAnalyticsAdapter
+  app.analytics.adapter.config: 'ga.yml'
+  app.bitrix_events.adapter.class: app\components\bitrix\events\adapters\BitrixEventsAdapter
+  app.bitrix_events.adapter.config: 'bitrix_events.yml'
+services:
+  app.bitrix_events:
+    class: app\components\bitrix\events\EventsManager
+    arguments: ['%app.bitrix_events.adapter.class%', '%app.bitrix_events.adapter.config%']
+  app.web.resource:
+    class: app\components\web\Resource
+  app.mailchimp_statistic:
+    class: app\components\mailchimp\StatisticManager  
+  app.analytics:
+    class: app\components\analytics\Manager
+    arguments: ['%app.analytics.adapter.class%', '%app.analytics.adapter.config%']
+  app.mailer:
+    class: app\components\maildelivery\Mailer
+    arguments: ['%app.mailer.adapter.class%', '%app.mailer.adapter.config%']
+  app.analytics:
+    class: app\components\analytics\Manager
+    arguments:  ['%app.analytics.adapter.class%', '%app.analytics.adapter.config%']
