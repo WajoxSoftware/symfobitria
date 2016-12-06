@@ -34,3 +34,5 @@
 ## Docs
 
 * [Get started](docs)
+* [Apache config example](docs/apache_config.md)
+* [Nginx config example](docs/nginx_config.md)
