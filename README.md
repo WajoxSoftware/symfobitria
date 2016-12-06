@@ -20,7 +20,7 @@
 * \db - Phinx migrations and seeds
 * \vendor - Composer vendors directory
 
-## Symfony components
+## Components
 
 * For Http request & http responses - [The HttpFoundation Component](http://symfony.com/doc/current/components/http_foundation.html)
 * For view side - [The Templating Component](http://symfony.com/doc/current/components/templating.html)
