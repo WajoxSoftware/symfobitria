@@ -7,18 +7,18 @@ Use Application instance instead of global variables e.g.:
 ```
 # in views
 $this->getApplication()->getBitrix()->APPLICATION; # global $APPLICATION
-# on other places
-\app\components\base\Application::getInstance()->getBitrix()->APPLICATION;
+# in other places
+\wajox\symbitcore\base\Application::getInstance()->getBitrix()->APPLICATION;
 ```
 
 This way you can access other bitrix global variables.
 
 ## How to use symfony components on bitrix side
-There is simple way to access all application components from bitrix side, just call \app\components\base\Application::getInstance() e.g.:
+There is simple way to access all application components from bitrix side, just call \wajox\symbitcore\base\Application::getInstance() e.g.:
 
 ```
 # access request object from bitrix side
-\app\components\base\Application::getInstance()->getRequest(); # this is request object
+\wajox\symbitcore\base\Application::getInstance()->getRequest(); # this is request object
 ```
 
 ## How to create controller
@@ -31,7 +31,7 @@ There is example of controller with view
 <?php
 namespace app\bundles\hello\controllers;
 
-class DefaultController extends \app\components\base\BaseController
+class DefaultController extends \wajox\symbitcore\base\BaseController
 {
     # path to views directory
 	protected $viewPath = '/bundles/hello/views/default'; 
