@@ -1,7 +1,7 @@
 <?php
 namespace app\bundles\main\controllers;
 
-class DefaultController extends \app\components\base\BaseController
+class DefaultController extends \wajox\symbitcore\base\BaseController
 {
 	public function indexAction()
 	{

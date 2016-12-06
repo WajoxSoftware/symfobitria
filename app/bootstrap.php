@@ -1,29 +1,8 @@
 <?php
+include(__DIR__ . '/../vendor/autoload.php');
 
-include(__DIR__ . '/vendor/autoload.php');
-
-/* 
-// Directory definitions examples
-
-// bitrix directories
-define('APP_BITRIX_ROOT_DIR', __DIR__ . '/../bapp');
-define('APP_BITRIX_DIR', APP_BITRIX_ROOT_DIR . '/bitrix');
-
-// app directories
-define('APP_BASE_DIR', __DIR__);
-define('APP_BUNDLES_DIR', APP_BASE_DIR . '/bundles');
-define('APP_CONFIG_DIR', __DIR__ . '/../config');
-
-// www directory
-define('APP_WEB_DIR', __DIR__ . '/../web');
-
-// Run application
-
-\app\components\base\Application::createInstance();
-*/
 include(__DIR__ . '/bootstrap/constants.php');
 include(__DIR__ . '/bootstrap/env.php');
-
 
 global $USER;
 global $APPLICATION;

@@ -1,9 +1,10 @@
 <?php
+use wajox\symbitcore\base\Application;
 // patch for bitrix
 //$_SERVER['DOCUMENT_ROOT'] = APP_BITRIX_ROOT_DIR;
 
 // load env variables, load composer autoloaders
-include(__DIR__ . '/../app/bootstrap.php');
+include(__DIR__ . '/bootstrap.php');
 
 // rewrite DOCUMENT ROOT path for Bitrix
 
@@ -16,20 +17,20 @@ $ext = pathinfo($requestPath, PATHINFO_EXTENSION);
 define('APP_REQUEST_PATH' , $requestPath);
 
 // redirect if not excecutable file
-if (!in_array($ext, ['', 'php', 'phtml', 'html'])
+/*if (!in_array($ext, ['', 'php', 'phtml', 'html'])
 	&& file_exists(APP_BITRIX_ROOT_DIR . realpath($requestPath))
 	&& APP_BITRIX_ROOT_DIR . realpath($requestPath) != APP_BITRIX_ROOT_DIR
 ) {
 	header('Location: /btxapp/' . $requestPath);
 	die();
-}
+}*/
 
-\app\components\base\Application::createInstance()->prepareHttp();
+Application::createInstance()->prepareHttp();
 
 $loadBitrix = false;
 
 try {
-	\app\components\base\Application::getInstance()
+	Application::getInstance()
 		->parseRequest()
 		->run();	
 } catch(\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {

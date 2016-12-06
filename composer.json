@@ -1,0 +1,13 @@
+{
+    "require": {
+        "wajox/symbitcore": "*",
+        "dompdf/dompdf": "*"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"app\\": "./app",
+            "Entity\\": "./app/model/Entity"
+    	}
+    },
+    "minimum-stability": "dev"
+}

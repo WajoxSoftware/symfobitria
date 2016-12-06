@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/bootstrap.php';
+require __DIR__ . '/app/bootstrap.php';
 
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Setup as DoctrineSetup;

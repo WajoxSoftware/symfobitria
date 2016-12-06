@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d4e6ea68e64197ba26bbc17c75175244",
-    "content-hash": "af02c2a329c9fa186bf929a33c473d31",
+    "hash": "a7c8586cb44511fb0e44ccec186104a1",
+    "content-hash": "c57365ef34392f3b3a2967908bc69bf9",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "0e7ac7811c67d1c4fe93e0fe44d11c90e09d6b20"
+                "reference": "9fa5962201c8b69cb68d091bfa6a77e92e2a3559"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/0e7ac7811c67d1c4fe93e0fe44d11c90e09d6b20",
-                "reference": "0e7ac7811c67d1c4fe93e0fe44d11c90e09d6b20",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/9fa5962201c8b69cb68d091bfa6a77e92e2a3559",
+                "reference": "9fa5962201c8b69cb68d091bfa6a77e92e2a3559",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +142,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2016-10-29 11:43:38"
+            "time": "2016-12-04 05:51:54"
         },
         {
             "name": "doctrine/collections",
@@ -216,12 +216,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "f74f44daa5f34777fd3618b3610cdac5935a8b16"
+                "reference": "c10aa59433689cf803dc669c8512cc1a3612233c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/f74f44daa5f34777fd3618b3610cdac5935a8b16",
-                "reference": "f74f44daa5f34777fd3618b3610cdac5935a8b16",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/c10aa59433689cf803dc669c8512cc1a3612233c",
+                "reference": "c10aa59433689cf803dc669c8512cc1a3612233c",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2016-10-06 03:17:04"
+            "time": "2016-12-03 08:10:21"
         },
         {
             "name": "doctrine/dbal",
@@ -289,16 +289,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "51f6934c19635fa1c69680482522c734a0121463"
+                "reference": "b551fcb26a81e230085c0dca88174573b6c36609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/51f6934c19635fa1c69680482522c734a0121463",
-                "reference": "51f6934c19635fa1c69680482522c734a0121463",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/b551fcb26a81e230085c0dca88174573b6c36609",
+                "reference": "b551fcb26a81e230085c0dca88174573b6c36609",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "~2.4",
+                "doctrine/common": "^2.7.1",
                 "php": "^5.6 || ^7.0"
             },
             "require-dev": {
@@ -353,7 +353,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2016-11-06 12:49:02"
+            "time": "2016-12-04 05:57:28"
         },
         {
             "name": "doctrine/inflector",
@@ -1124,12 +1124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "a871ba00e0f604dceac64c56c27f99fbeaf4854e"
+                "reference": "9c7fe99ae3947d853dcc61efd9660e9cbad1d025"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/a871ba00e0f604dceac64c56c27f99fbeaf4854e",
-                "reference": "a871ba00e0f604dceac64c56c27f99fbeaf4854e",
+                "url": "https://api.github.com/repos/symfony/console/zipball/9c7fe99ae3947d853dcc61efd9660e9cbad1d025",
+                "reference": "9c7fe99ae3947d853dcc61efd9660e9cbad1d025",
                 "shasum": ""
             },
             "require": {
@@ -1177,7 +1177,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-15 23:02:12"
+            "time": "2016-12-05 08:41:28"
         },
         {
             "name": "symfony/debug",
@@ -1735,6 +1735,52 @@
                 "environment"
             ],
             "time": "2016-11-28 23:08:37"
+        },
+        {
+            "name": "wajox/symbitcore",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WajoxSoftware/symbitcore.git",
+                "reference": "5537dc33483a594886b68c6f674329adab089898"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WajoxSoftware/symbitcore/zipball/5537dc33483a594886b68c6f674329adab089898",
+                "reference": "5537dc33483a594886b68c6f674329adab089898",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "2.4.*",
+                "drewm/mailchimp-api": "^2.2",
+                "robmorgan/phinx": "*",
+                "symfony/config": "^3.1",
+                "symfony/dependency-injection": "^3.1",
+                "symfony/http-foundation": "^3.1",
+                "symfony/routing": "^3.1",
+                "symfony/templating": "^3.1",
+                "symfony/yaml": "^3.1",
+                "theiconic/php-ga-measurement-protocol": "^2.0",
+                "vlucas/phpdotenv": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "wajox\\symbitcore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ildar Usmanov",
+                    "email": "wajox@mail.ru"
+                }
+            ],
+            "description": "bitrix wrapper core",
+            "time": "2016-12-05 14:30:52"
         }
     ],
     "packages-dev": [],

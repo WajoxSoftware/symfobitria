@@ -1,4 +1,4 @@
 # Routes
 hello:
-    path: /hello
+    path: /
     defaults: { _controller: '\app\bundles\main\controllers\DefaultController', _action: 'index' }

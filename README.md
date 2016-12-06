@@ -1,22 +1,25 @@
 # Symfobitria
 
-Simple wrapper for projects based on Bitrix CMS.
-
 ## Directories structure
 
 ```
 /
  - \app
+ - \bin
  - \btxapp
  - \config
- - \web
+ - \db
+ - \vendor
+
 
 ```
 
 * \app - Application with dependencies and other components
+* \bin - Console Application
 * \btxapp - Bitrix application
 * \config - Configurations
-* \web - contains Application entry point(index.php)
+* \db - Phinx migrations and seeds
+* \vendor - Composer vendors directory
 
 ## Symfony components
 
@@ -25,10 +28,9 @@ Simple wrapper for projects based on Bitrix CMS.
 * For YAML configs - [The Yaml Component](http://symfony.com/doc/current/components/yaml.html)
 * For routing - [The Routing Component ](http://symfony.com/doc/current/components/routing.html)
 * For DI - [DependencyInjection component](http://symfony.com/doc/current/components/dependency_injection.html)
-* For DB migrations - [Phinx](http://docs.phinx.org/en/latest/)
-* For ORM - [Doctrine 2 ORM](http://www.doctrine-project.org/)
-* For Console [The Console Component](http://symfony.com/doc/current/components/console.html)
-
+* Fro migrations and seeds - [Phinx](https://phinx.org/)
+* ORM & DBAL - [Doctrine](http://www.doctrine-project.org/)
+* For Envireonment configuration - [PHP dotenv](https://github.com/vlucas/phpdotenv)
 
 ## How to work with bitrix api
 
