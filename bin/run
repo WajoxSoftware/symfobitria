@@ -1,23 +1,24 @@
 #!/usr/bin/env php
 <?php
-use wajox\symbitcore\base\Application;
-
 require __DIR__ . '/../app/bootstrap.php';
 
 $firstArgv = isset($argv[1]) ? $argv[1] : null;
 
+// fix
+if (empty($_ENV)) {
+	$_ENV = $_SERVER;	
+}
+
 if ($firstArgv 
 	&& file_exists(APP_BITRIX_ROOT_DIR . '/' . $firstArgv)
 ) {
-	Application::createInstance([
+	\wajox\symbitcore\base\Application::createInstance([
 		'loadBitrixFiles' => false,
 	]);
 	
 	include(APP_BITRIX_ROOT_DIR . '/' . $firstArgv);
 } else {
-	Application::createInstance([
+	\wajox\symbitcore\base\Application::createInstance([
 		'loadBitrixFiles' => true,
 	])->runConsole();
 }
-
-
