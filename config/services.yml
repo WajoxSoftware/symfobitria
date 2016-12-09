@@ -6,6 +6,8 @@ parameters:
   app.bitrix_events.adapter.class: \wajox\symbitcore\bitrix\events\adapters\BitrixEventsAdapter
   app.bitrix_events.adapter.config: 'bitrix_events.yml'
 services:
+  app.console:
+    class: \wajox\symbitcore\console\CommandsManager
   app.bitrix_events:
     class: \wajox\symbitcore\bitrix\events\EventsManager
     arguments: ['%app.bitrix_events.adapter.class%', '%app.bitrix_events.adapter.config%']
